@@ -1,3 +1,16 @@
 #!/bin/bash
-# send a request to an URL with curl, and displays the size of the body of the response
-curl -s "$1" | wc -c
+
+# Check if URL is provided as an argument
+if [ -z "$1" ]; then
+    echo "Please provide a URL as an argument."
+    exit 1
+fi
+
+# Store the URL provided as an argument
+url=$1
+
+# Send request using curl and store the response body
+response=$(curl -s -w "%{size_download}" -o /dev/null "$url")
+
+# Display the size of the response body
+echo "$response"
