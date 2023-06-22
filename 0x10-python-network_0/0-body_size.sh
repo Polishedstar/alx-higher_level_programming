@@ -12,5 +12,5 @@ url=$1
 # Send request using curl and store the response body
 response=$(curl -s -w "%{size_download}" -o /dev/null "$url")
 
-# Display the size of the response body
-echo "$response"
+# Display the size of the response body in bytes
+echo "$response bytes"
